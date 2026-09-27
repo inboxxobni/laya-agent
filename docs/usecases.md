@@ -14,7 +14,7 @@ Use it for classification, gating, routing and scoring. Use rules (or an LLM) fo
 | `shell_risk(cmd)` | safe / needs_approval / destructive gate before an agent runs a command | 7/8 (missed: `cargo test` judged needs_approval; conservative side) |
 | `test_verdict(log)` | passed / failed / tooling error from test output | 6/6 |
 | `next_step(progress)` | next action from counters | 5/5 **by rules**: Laya's text version scored 2/5 with near-uniform probabilities, so it is not used |
-| `model_tier(request)` | small / medium / large model from a difficulty score | not yet evaluated |
+| `model_tier(request)` | small / medium / large model from a difficulty score | 5/5, thresholds (small below 1.5, large from 1.8) fitted on the same 5 cases: trivial requests scored about 1.3, hard ones 2.0-2.1 |
 | `needs_review(diff)` | independent-review trigger (ALLAGENT reviewer rule) | 4/4, threshold tuned on the same 4 cases: re-validate |
 
 ## Web agent and scraping
@@ -23,7 +23,7 @@ Use it for classification, gating, routing and scoring. Use rules (or an LLM) fo
 | `page_kind(text)` | search_form / results / article / login / captcha / cookie_banner / error | 6/7 (a bare form-label string was called `results`) |
 | `is_blocked(text)` | robot check or access denial: hand to a human, never bypass | 3/4 (missed "Are you a person or a robot? Verify to continue.", P below 0.5) |
 | `pick_element(goal, elements)` | choose the element for a goal | used inside the vendored browser agent |
-| `link_relevance(goal, link)` | 0-3 crawl-priority score | not yet evaluated |
+| `link_relevance(goal, link)` | 0-3 crawl-priority score | 5/5 at threshold 1.5 ("Pricing plans" 1.83, "Buy now" 1.95 vs "Contact us" 1.14, "Privacy policy" 0.45, "Careers" 0.38); threshold chosen after seeing these scores |
 
 The full browser agent (`laya_ultrafast/`, `make browse`) is the Jev-ultrafast loop with Laya in place of the hosted model, plus one
 text-model call per task. Upstream reports Google Flights 5/5 (7.5-12.1 s); we have not reproduced that from this repo yet.

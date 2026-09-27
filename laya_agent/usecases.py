@@ -58,7 +58,8 @@ def model_tier(engine, request):
     """Cheap difficulty router: which model tier should answer (laya-mlx router preset semantics)."""
     score = engine.score({"request": request}, "How hard is `request` for a language model?",
                          ["trivial lookup", "simple", "moderate reasoning", "hard multi-step reasoning or large code change"])
-    return {"tier": "small" if score["score"] < 1.0 else "medium" if score["score"] < 2.0 else "large", **score}
+    # Measured on 5 requests: trivial ones scored about 1.3, hard ones about 2.0-2.1. Thresholds are provisional.
+    return {"tier": "small" if score["score"] < 1.5 else "large" if score["score"] >= 1.8 else "medium", **score}
 
 
 # ------------------------------------------------------------------------------------------------ web
@@ -180,6 +181,13 @@ EVALS = {
         ({"files_read": 3, "files_edited": 1, "tests_run_after_last_edit": False}, "run_tests"),
         ({"files_read": 0, "files_edited": 0, "ambiguous": True}, "ask_user"),
         ({"files_read": 3, "files_edited": 1, "tests_run_after_last_edit": True, "tests_passing": True}, "finish")]),
+    "coding.model_tier": (lambda e, s: model_tier(e, s)["tier"], [
+        ("What is 2+2?", "small"), ("Translate 'hello' to French.", "small"),
+        ("Explain the tradeoffs between B-trees and LSM trees for write-heavy workloads.", "large"),
+        ("Refactor our 40-file auth module to use OAuth2 and update all tests.", "large"),
+        ("Prove the halting problem is undecidable.", "large")]),
+    "web.link_relevance (>=1.5 relevant)": (lambda e, s: link_relevance(e, "find the pricing of the product", s) >= 1.5, [
+        ("Pricing plans", True), ("Buy now - $19/mo", True), ("Careers", False), ("Privacy policy", False), ("Contact us", False)]),
     "web.page_kind": (page_kind, [
         ("From: Where to: Departure date: Search flights", "search_form"), ("12 hotels in Lisbon. Casa Flora 120 EUR. Hotel Sol 95 EUR.", "results"),
         ("We use cookies to improve your experience. Accept all. Manage preferences.", "cookie_banner"),
