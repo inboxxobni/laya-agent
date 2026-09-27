@@ -24,6 +24,7 @@ Daily commands:
 | `make serve` | local decision API on 127.0.0.1:8780 ([api.md](api.md)) |
 | `uv run laya-agent choice "text" --q "question" --options a b c` | one-off typed decision |
 | `uv run laya-agent yesno "text" --q "proposition"` | P(true) |
+| `uv run laya-agent chat` | chat agent: Laya guards/routes each message, Ollama answers (`--once "msg"` for one shot) |
 | `make browse` | browser agent inspector on :8766 (needs Chrome remote debugging, see below) |
 | `make bench` / `uv run laya-agent capabilities` / `uv run laya-agent usecases` | measure and save to `results/` |
 | `make test` | offline lint + tests (a fake model stands in for Laya) |

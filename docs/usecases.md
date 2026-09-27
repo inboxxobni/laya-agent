@@ -37,7 +37,7 @@ Do not expect spatial reasoning from the encoder.
 
 ## Chat agent
 `chat_route(msg)` runs guard, intent and difficulty in one forward pass (about 20-60 ms): block attacks, route small talk to a small model,
-hard questions to a large one. Measured 3/4 on 4 cases (attack detection right; "hi there!" was mislabelled `action`). Use the `guard`
+hard questions to a large one. Measured 3/4 on 4 cases (attack detection right; "hi there!" was mislabelled `action`). Run it as `uv run laya-agent chat` (Ollama answers; verified: a normal question was answered by `qwen2.5:latest`, an instruction-override prompt was refused before reaching the model). Use the `guard`
 preset for injection screening; measured 1.0/1.0 on an obvious jailbreak and 0.0 on a benign question.
 
 ## Acryl / ALLAGENT (continuous mode)

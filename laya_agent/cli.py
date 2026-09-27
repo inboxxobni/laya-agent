@@ -74,6 +74,8 @@ def main():
     caps = sub.add_parser("capabilities", help="exercise every Laya capability, write results/capabilities-*.json")
     caps.add_argument("--only", nargs="+", help="suite names to run")
     sub.add_parser("usecases", help="run the labelled eval for coding / web / games / chat / acryl primitives")
+    chat = sub.add_parser("chat", help="chat agent: Laya guards and routes, Ollama answers")
+    chat.add_argument("--once", help="send one message and exit")
     args = parser.parse_args()
 
     load_environment()
@@ -85,6 +87,11 @@ def main():
         run(args.only)
         return
     engine = Engine()
+    if args.cmd == "chat":
+        from .chat import repl
+
+        repl(engine, args.once)
+        return
     if args.cmd == "usecases":
         from .usecases import run as run_usecases
 
