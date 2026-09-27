@@ -1,0 +1,188 @@
+{
+  "model": "aac6fef/laya-typed-decisions-mlx",
+  "machine": "arm64 macOS-26.7-arm64-arm-64bit",
+  "when": "2026-09-27T02:37:59+00:00",
+  "calls": 102,
+  "latency_ms": {
+    "p50": 14.56,
+    "p95": 16.19,
+    "max": 22.52
+  },
+  "suites": {
+    "intent": {
+      "accuracy": 0.875,
+      "correct": 7,
+      "total": 8,
+      "rows": [
+        {
+          "state": "I was charged twice this month, please refund the duplicate.",
+          "expected": "billing",
+          "got": "billing",
+          "ok": true,
+          "top_probability": 0.6722
+        },
+        {
+          "state": "The app crashes every time I open the settings page.",
+          "expected": "technical",
+          "got": "technical",
+          "ok": true,
+          "top_probability": 0.6789
+        },
+        {
+          "state": "Can I get a quote for 50 seats on the team plan?",
+          "expected": "sales",
+          "got": "sales",
+          "ok": true,
+          "top_probability": 0.4365
+        },
+        {
+          "state": "I forgot my password and the reset email never arrives.",
+          "expected": "account",
+          "got": "account",
+          "ok": true,
+          "top_probability": 0.4677
+        },
+        {
+          "state": "My invoice shows the wrong VAT number.",
+          "expected": "billing",
+          "got": "billing",
+          "ok": true,
+          "top_probability": 0.5551
+        },
+        {
+          "state": "The API returns 500 when I upload a file over 10MB.",
+          "expected": "technical",
+          "got": "technical",
+          "ok": true,
+          "top_probability": 0.599
+        },
+        {
+          "state": "We are interested in an enterprise contract with SSO.",
+          "expected": "sales",
+          "got": "account",
+          "ok": false,
+          "top_probability": 0.3035
+        },
+        {
+          "state": "Please change the email address on my profile.",
+          "expected": "account",
+          "got": "account",
+          "ok": true,
+          "top_probability": 0.5865
+        }
+      ]
+    },
+    "agent_route": {
+      "accuracy": 0.75,
+      "correct": 6,
+      "total": 8,
+      "rows": [
+        {
+          "state": "Rename the function parseUser to parse_user across the repo.",
+          "expected": "code_edit",
+          "got": "code_edit",
+          "ok": true,
+          "top_probability": 0.6797
+        },
+        {
+          "state": "Go to google flights and search Zurich to London for Oct 20.",
+          "expected": "web_browse",
+          "got": "web_browse",
+          "ok": true,
+          "top_probability": 0.4447
+        },
+        {
+          "state": "Summarize what is known about non-autoregressive decision models.",
+          "expected": "research",
+          "got": "research",
+          "ok": true,
+          "top_probability": 0.5729
+        },
+        {
+          "state": "Thanks, that looks great!",
+          "expected": "chat",
+          "got": "chat",
+          "ok": true,
+          "top_probability": 0.3524
+        },
+        {
+          "state": "Fix the failing unit test in auth.spec.ts.",
+          "expected": "code_edit",
+          "got": "code_edit",
+          "ok": true,
+          "top_probability": 0.5899
+        },
+        {
+          "state": "Open the Wikipedia page for Goedel's incompleteness theorems.",
+          "expected": "web_browse",
+          "got": "research",
+          "ok": false,
+          "top_probability": 0.4948
+        },
+        {
+          "state": "Compare three vector databases and cite sources.",
+          "expected": "research",
+          "got": "web_browse",
+          "ok": false,
+          "top_probability": 0.4608
+        },
+        {
+          "state": "Good morning, how are you?",
+          "expected": "chat",
+          "got": "chat",
+          "ok": true,
+          "top_probability": 0.6368
+        }
+      ]
+    },
+    "yesno": {
+      "accuracy": 1.0,
+      "correct": 6,
+      "total": 6,
+      "rows": [
+        {
+          "state": "The build failed with 3 test failures.",
+          "expected": false,
+          "got": false,
+          "ok": true,
+          "p_true": 0.0935
+        },
+        {
+          "state": "All 120 tests passed and the deploy finished.",
+          "expected": true,
+          "got": true,
+          "ok": true,
+          "p_true": 0.7165
+        },
+        {
+          "state": "Order confirmed. Your flight ZRH to LHR is booked.",
+          "expected": true,
+          "got": true,
+          "ok": true,
+          "p_true": 0.7093
+        },
+        {
+          "state": "Showing 12 hotels in Lisbon matching your filters.",
+          "expected": false,
+          "got": false,
+          "ok": true,
+          "p_true": 0.1396
+        },
+        {
+          "state": "Error: rate limit exceeded, retry in 60 seconds.",
+          "expected": true,
+          "got": true,
+          "ok": true,
+          "p_true": 0.6278
+        },
+        {
+          "state": "Task completed in 4.2 seconds with no errors.",
+          "expected": false,
+          "got": false,
+          "ok": true,
+          "p_true": 0.2396
+        }
+      ]
+    }
+  }
+}

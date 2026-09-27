@@ -1,0 +1,89 @@
+{
+  "when": "2026-09-27T02:42:37+00:00",
+  "suites": {
+    "long_context": {
+      "100": {
+        "code": {
+          "tokens_in": 155,
+          "got": "7431",
+          "correct": true,
+          "ms": 51.8
+        },
+        "semantic": {
+          "tokens_in": 155,
+          "got": true,
+          "correct": true,
+          "ms": 14.3
+        }
+      },
+      "400": {
+        "code": {
+          "tokens_in": 469,
+          "got": "not stated",
+          "correct": false,
+          "ms": 29.9
+        },
+        "semantic": {
+          "tokens_in": 469,
+          "got": false,
+          "correct": false,
+          "ms": 27.5
+        }
+      },
+      "1000": {
+        "code": {
+          "tokens_in": 1115,
+          "got": "not stated",
+          "correct": false,
+          "ms": 68.0
+        },
+        "semantic": {
+          "tokens_in": 1115,
+          "got": false,
+          "correct": false,
+          "ms": 63.5
+        }
+      },
+      "2500": {
+        "code": {
+          "tokens_in": 2719,
+          "got": "not stated",
+          "correct": false,
+          "ms": 199.5
+        },
+        "semantic": {
+          "tokens_in": 2719,
+          "got": false,
+          "correct": false,
+          "ms": 194.7
+        }
+      },
+      "5000": {
+        "code": {
+          "tokens_in": 5405,
+          "got": "not stated",
+          "correct": false,
+          "ms": 576.3
+        },
+        "semantic": {
+          "tokens_in": 5405,
+          "got": false,
+          "correct": false,
+          "ms": 579.6
+        }
+      }
+    },
+    "shortlist": {
+      "options": 200,
+      "plain": {
+        "error": "Question 'c' has too many options for the token budget"
+      },
+      "shortlist_k20": {
+        "choice": "tool_042",
+        "ms": 373.2,
+        "target_kept": false
+      }
+    }
+  },
+  "total_s": 5.5
+}

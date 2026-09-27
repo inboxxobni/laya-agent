@@ -1,0 +1,109 @@
+{
+  "when": "2026-09-27T02:42:54+00:00",
+  "suites": {
+    "long_context": {
+      "100": {
+        "code": {
+          "tokens_in": 155,
+          "got": "7431",
+          "correct": true,
+          "ms": 50.9
+        },
+        "chunked_max_pool": {
+          "p_true": 0.835,
+          "correct": true
+        },
+        "semantic": {
+          "tokens_in": 155,
+          "got": true,
+          "correct": true,
+          "ms": 17.9
+        }
+      },
+      "400": {
+        "code": {
+          "tokens_in": 469,
+          "got": "not stated",
+          "correct": false,
+          "ms": 29.1
+        },
+        "chunked_max_pool": {
+          "p_true": 0.705,
+          "correct": true
+        },
+        "semantic": {
+          "tokens_in": 469,
+          "got": false,
+          "correct": false,
+          "ms": 28.4
+        }
+      },
+      "1000": {
+        "code": {
+          "tokens_in": 1115,
+          "got": "not stated",
+          "correct": false,
+          "ms": 67.3
+        },
+        "chunked_max_pool": {
+          "p_true": 0.625,
+          "correct": true
+        },
+        "semantic": {
+          "tokens_in": 1115,
+          "got": false,
+          "correct": false,
+          "ms": 63.6
+        }
+      },
+      "2500": {
+        "code": {
+          "tokens_in": 2719,
+          "got": "not stated",
+          "correct": false,
+          "ms": 201.9
+        },
+        "chunked_max_pool": {
+          "p_true": 0.705,
+          "correct": true
+        },
+        "semantic": {
+          "tokens_in": 2719,
+          "got": false,
+          "correct": false,
+          "ms": 197.5
+        }
+      },
+      "5000": {
+        "code": {
+          "tokens_in": 5405,
+          "got": "not stated",
+          "correct": false,
+          "ms": 582.6
+        },
+        "chunked_max_pool": {
+          "p_true": 0.805,
+          "correct": true
+        },
+        "semantic": {
+          "tokens_in": 5405,
+          "got": false,
+          "correct": false,
+          "ms": 625.1
+        }
+      }
+    },
+    "shortlist": {
+      "options": 200,
+      "plain": {
+        "error": "Question 'c' has too many options for the token budget"
+      },
+      "shortlist_k20": {
+        "choice": "tool_042",
+        "ms": 364.2,
+        "chose_a_billing_tool": true
+      }
+    }
+  },
+  "total_s": 6.6
+}

@@ -141,3 +141,9 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+
+# local
+.venv/
+artifacts/
+.ruff_cache/
+.pytest_cache/

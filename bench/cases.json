@@ -1,0 +1,40 @@
+{
+  "intent": {
+    "instructions": "Which team should handle this message?",
+    "options": ["billing", "technical", "sales", "account"],
+    "cases": [
+      ["I was charged twice this month, please refund the duplicate.", "billing"],
+      ["The app crashes every time I open the settings page.", "technical"],
+      ["Can I get a quote for 50 seats on the team plan?", "sales"],
+      ["I forgot my password and the reset email never arrives.", "account"],
+      ["My invoice shows the wrong VAT number.", "billing"],
+      ["The API returns 500 when I upload a file over 10MB.", "technical"],
+      ["We are interested in an enterprise contract with SSO.", "sales"],
+      ["Please change the email address on my profile.", "account"]
+    ]
+  },
+  "agent_route": {
+    "instructions": "Which kind of agent task is this?",
+    "options": ["code_edit", "web_browse", "research", "chat"],
+    "cases": [
+      ["Rename the function parseUser to parse_user across the repo.", "code_edit"],
+      ["Go to google flights and search Zurich to London for Oct 20.", "web_browse"],
+      ["Summarize what is known about non-autoregressive decision models.", "research"],
+      ["Thanks, that looks great!", "chat"],
+      ["Fix the failing unit test in auth.spec.ts.", "code_edit"],
+      ["Open the Wikipedia page for Goedel's incompleteness theorems.", "web_browse"],
+      ["Compare three vector databases and cite sources.", "research"],
+      ["Good morning, how are you?", "chat"]
+    ]
+  },
+  "yesno": {
+    "cases": [
+      ["The build failed with 3 test failures.", "Did the task succeed?", false],
+      ["All 120 tests passed and the deploy finished.", "Did the task succeed?", true],
+      ["Order confirmed. Your flight ZRH to LHR is booked.", "Was a flight booked?", true],
+      ["Showing 12 hotels in Lisbon matching your filters.", "Was a flight booked?", false],
+      ["Error: rate limit exceeded, retry in 60 seconds.", "Is the agent rate limited?", true],
+      ["Task completed in 4.2 seconds with no errors.", "Is the agent rate limited?", false]
+    ]
+  }
+}

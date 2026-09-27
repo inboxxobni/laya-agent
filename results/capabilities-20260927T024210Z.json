@@ -1,0 +1,296 @@
+{
+  "when": "2026-09-27T02:41:59+00:00",
+  "suites": {
+    "checkpoints": {
+      "english": {
+        "accuracy": "6/6",
+        "p50_ms": 15.15
+      },
+      "typed-decisions": {
+        "accuracy": "6/6",
+        "p50_ms": 15.08
+      },
+      "multilingual": {
+        "accuracy": "6/6",
+        "p50_ms": 10.24
+      }
+    },
+    "multilingual": {
+      "multilingual": {
+        "accuracy": "10/10",
+        "rows": [
+          {
+            "lang": "en",
+            "expected": "billing",
+            "got": "billing",
+            "p": 1.0
+          },
+          {
+            "lang": "zh",
+            "expected": "billing",
+            "got": "billing",
+            "p": 0.9968
+          },
+          {
+            "lang": "hi",
+            "expected": "billing",
+            "got": "billing",
+            "p": 0.9978
+          },
+          {
+            "lang": "es",
+            "expected": "billing",
+            "got": "billing",
+            "p": 1.0
+          },
+          {
+            "lang": "de",
+            "expected": "technical",
+            "got": "technical",
+            "p": 0.9984
+          },
+          {
+            "lang": "ja",
+            "expected": "technical",
+            "got": "technical",
+            "p": 0.9977
+          },
+          {
+            "lang": "ar",
+            "expected": "sales",
+            "got": "sales",
+            "p": 0.9999
+          },
+          {
+            "lang": "ru",
+            "expected": "sales",
+            "got": "sales",
+            "p": 0.9778
+          },
+          {
+            "lang": "fr",
+            "expected": "technical",
+            "got": "technical",
+            "p": 0.9993
+          },
+          {
+            "lang": "pt",
+            "expected": "sales",
+            "got": "sales",
+            "p": 0.9986
+          }
+        ]
+      },
+      "english": {
+        "accuracy": "9/10",
+        "rows": [
+          {
+            "lang": "en",
+            "expected": "billing",
+            "got": "billing",
+            "p": 0.9902
+          },
+          {
+            "lang": "zh",
+            "expected": "billing",
+            "got": "billing",
+            "p": 0.8773
+          },
+          {
+            "lang": "hi",
+            "expected": "billing",
+            "got": "billing",
+            "p": 0.4426
+          },
+          {
+            "lang": "es",
+            "expected": "billing",
+            "got": "billing",
+            "p": 0.9485
+          },
+          {
+            "lang": "de",
+            "expected": "technical",
+            "got": "technical",
+            "p": 0.9592
+          },
+          {
+            "lang": "ja",
+            "expected": "technical",
+            "got": "technical",
+            "p": 0.9436
+          },
+          {
+            "lang": "ar",
+            "expected": "sales",
+            "got": "technical",
+            "p": 0.384
+          },
+          {
+            "lang": "ru",
+            "expected": "sales",
+            "got": "sales",
+            "p": 0.7366
+          },
+          {
+            "lang": "fr",
+            "expected": "technical",
+            "got": "technical",
+            "p": 0.9804
+          },
+          {
+            "lang": "pt",
+            "expected": "sales",
+            "got": "sales",
+            "p": 0.8063
+          }
+        ]
+      },
+      "router_detection": {
+        "en": "english",
+        "zh": "multilingual",
+        "hi": "multilingual",
+        "es": "english",
+        "de": "english",
+        "ja": "multilingual",
+        "ar": "multilingual",
+        "ru": "multilingual",
+        "fr": "multilingual",
+        "pt": "english"
+      }
+    },
+    "batching": {
+      "1": {
+        "p50_ms": 14.9,
+        "ms_per_question": 14.9
+      },
+      "3": {
+        "p50_ms": 26.3,
+        "ms_per_question": 8.77
+      },
+      "8": {
+        "p50_ms": 52.56,
+        "ms_per_question": 6.57
+      },
+      "16": {
+        "p50_ms": 94.65,
+        "ms_per_question": 5.92
+      },
+      "32": {
+        "p50_ms": 189.85,
+        "ms_per_question": 5.93
+      }
+    },
+    "long_context": {
+      "100": {
+        "tokens_in": 155,
+        "answer": "7431",
+        "correct": true,
+        "ms": 32.4
+      },
+      "400": {
+        "tokens_in": 469,
+        "answer": "not stated",
+        "correct": false,
+        "ms": 107.7
+      },
+      "1000": {
+        "tokens_in": 1115,
+        "answer": "not stated",
+        "correct": false,
+        "ms": 182.4
+      },
+      "2500": {
+        "tokens_in": 2719,
+        "answer": "not stated",
+        "correct": false,
+        "ms": 245.5
+      },
+      "5000": {
+        "tokens_in": 5405,
+        "answer": "not stated",
+        "correct": false,
+        "ms": 647.3
+      }
+    },
+    "shortlist": {
+      "error": "AttributeError: module 'laya_mlx' has no attribute 'embed_fn_from_agent'"
+    },
+    "presets": {
+      "triage": {
+        "ms": 221.5,
+        "answers": {
+          "intent": "refund",
+          "is_urgent": 0.469,
+          "frustration": 2.275,
+          "refund_requested": 0.962,
+          "churn_risk": 0.362
+        }
+      },
+      "guard": {
+        "ms": 55.1,
+        "answers": {
+          "jailbreak": 1.0,
+          "prompt_injection": 1.0,
+          "sensitive_data": 0.014,
+          "harm_severity": 1.994,
+          "topic": "security_testing"
+        }
+      },
+      "guard_benign": {
+        "ms": 174.7,
+        "answers": {
+          "jailbreak": 0.0,
+          "prompt_injection": 0.002,
+          "sensitive_data": 0.0,
+          "harm_severity": 0.564,
+          "topic": "general_knowledge"
+        }
+      },
+      "moderation": {
+        "ms": 158.9,
+        "answers": {
+          "toxic": 0.749,
+          "harassment": 0.737,
+          "threat": 0.533,
+          "spam": 0.955,
+          "severity": 1.846
+        }
+      },
+      "router_hard": {
+        "ms": 191.1,
+        "answers": {
+          "difficulty": 2.294,
+          "domain": "math_or_logic",
+          "needs_tools": 0.069,
+          "is_sensitive": 0.0
+        }
+      },
+      "router_easy": {
+        "ms": 204.4,
+        "answers": {
+          "difficulty": 0.925,
+          "domain": "math_or_logic",
+          "needs_tools": 0.031,
+          "is_sensitive": 0.0
+        }
+      }
+    },
+    "state_shapes": {
+      "text": "billing",
+      "json": "billing",
+      "chat_list": "billing"
+    },
+    "compile": {
+      "eager": {
+        "p50_ms": 15.47,
+        "p95_ms": 24.46
+      },
+      "compile+cache_prompts": {
+        "p50_ms": 14.33,
+        "p95_ms": 19.17
+      }
+    }
+  },
+  "total_s": 14.3
+}
