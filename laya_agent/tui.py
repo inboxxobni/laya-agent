@@ -220,7 +220,11 @@ class LayaApp(App):
         log.mount(Static(f"you> {message}", classes="msg-user"))
         log.scroll_end()
         if not hasattr(self, "_chat_history"):
-            self._chat_history = [{"role": "system", "content": "You are a concise, helpful assistant."}]
+            import os
+
+            from .chat import system_prompt
+
+            self._chat_history = [{"role": "system", "content": system_prompt(os.environ.get("TEXT_MODEL", "qwen2.5:latest"))}]
         self.run_worker(lambda: self._chat_job(message, log), thread=True)
 
     def _chat_job(self, message, log) -> None:

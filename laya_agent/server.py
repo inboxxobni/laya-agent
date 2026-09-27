@@ -16,6 +16,7 @@ Binds to 127.0.0.1 by default: there is no authentication.
 
 import json
 import mimetypes
+import os
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
@@ -36,11 +37,11 @@ def field(body, name, kind):
 
 
 def chat_turn(engine, body):
-    from .chat import turn
+    from .chat import system_prompt, turn
 
     history = [dict(m) for m in body.get("history") or []]
     if not history:
-        history.append({"role": "system", "content": "You are a concise, helpful assistant."})
+        history.append({"role": "system", "content": system_prompt(os.environ.get("TEXT_MODEL", "qwen2.5:latest"))})
     answer, route = turn(engine, history, field(body, "message", str))
     return {"answer": answer, "route": route, "history": history}
 
