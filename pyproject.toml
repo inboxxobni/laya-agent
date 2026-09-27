@@ -8,7 +8,7 @@ requires-python = ">=3.12"
 dependencies = [
     "browser-harness==0.1.13",
     "httpx[http2]>=0.28,<1",
-    "laya-mlx",
+    "laya-mlx[demo]",
 ]
 
 [project.scripts]

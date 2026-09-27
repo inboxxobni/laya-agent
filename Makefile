@@ -1,4 +1,4 @@
-.PHONY: setup weights doctor test serve bench browse fixtures clean-artifacts
+.PHONY: setup weights doctor test serve bench browse chrome fixture snake chat usecases capabilities
 setup:        ## install deps and create .env
 	uv sync
 	@test -f .env || cp .env.example .env
@@ -14,3 +14,15 @@ bench:        ## latency + accuracy, writes results/bench-*.json
 	uv run laya-agent bench
 browse:       ## browser agent inspector on http://127.0.0.1:8766
 	uv run laya
+chrome:       ## private headless Chrome for the browser agent (does not touch your browser)
+	"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --remote-debugging-port=9333 --user-data-dir=$$HOME/.laya-agent-chrome --no-first-run about:blank &
+fixture:      ## browser agent on the local fixture page (needs `make chrome` first)
+	BU_CDP_URL=http://127.0.0.1:9333 uv run python scripts/run_fixture.py --scenario travel
+snake:        ## Snake benchmark: Laya with and without the safety layer
+	uv run python scripts/snake_bench.py
+chat:         ## local chat: Laya guards/routes, Ollama answers
+	uv run laya-agent chat
+usecases:     ## labelled evals for every primitive
+	uv run laya-agent usecases
+capabilities: ## every Laya capability
+	uv run laya-agent capabilities

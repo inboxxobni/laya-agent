@@ -1,0 +1,60 @@
+{
+  "model": "aac6fef/laya-multilingual-mlx",
+  "steps": 1000,
+  "runs": [
+    {
+      "seed": 1,
+      "mode": "assisted",
+      "score": 32,
+      "length": 38,
+      "deaths": 0,
+      "interventions": 2,
+      "mean_inference_ms": 15.281784881022759
+    },
+    {
+      "seed": 1,
+      "mode": "unassisted",
+      "score": 3,
+      "length": 9,
+      "deaths": 0,
+      "interventions": 0,
+      "mean_inference_ms": 15.57570641618804
+    },
+    {
+      "seed": 2,
+      "mode": "assisted",
+      "score": 35,
+      "length": 41,
+      "deaths": 0,
+      "interventions": 1,
+      "mean_inference_ms": 16.006454703805503
+    },
+    {
+      "seed": 2,
+      "mode": "unassisted",
+      "score": 18,
+      "length": 24,
+      "deaths": 0,
+      "interventions": 0,
+      "mean_inference_ms": 19.7661134719674
+    },
+    {
+      "seed": 3,
+      "mode": "assisted",
+      "score": 31,
+      "length": 37,
+      "deaths": 0,
+      "interventions": 0,
+      "mean_inference_ms": 17.95583100791555
+    },
+    {
+      "seed": 3,
+      "mode": "unassisted",
+      "score": 31,
+      "length": 37,
+      "deaths": 0,
+      "interventions": 0,
+      "mean_inference_ms": 18.3529501305311
+    }
+  ]
+}

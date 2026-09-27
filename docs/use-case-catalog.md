@@ -28,7 +28,7 @@ Numbers and cases: [usecases.md](usecases.md), [capabilities.md](capabilities.md
 ## Games
 | # | Use case | Status | How |
 |---|---|---|---|
-| G1 | Snake | works (upstream) | `laya-snake` from laya-mlx: proposal + safety rules |
+| G1 | Snake | works: 0 deaths in 6 runs of 1,000 moves; score 32/35/31 with the safety layer, 3/18/31 without | `laya-snake` (laya-mlx), `scripts/snake_bench.py` |
 | G2 | Board games (tic-tac-toe) | no (0/6) | needs rule engine, Laya only for semantic questions |
 
 ## Chat

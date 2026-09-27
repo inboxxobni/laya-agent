@@ -31,7 +31,7 @@ For scraping, combine `page_kind` + `is_blocked` + `link_relevance` to drive a c
 
 ## Games
 `laya-mlx` ships `laya-snake` (Laya drives Snake with three questions per move plus a visible safety layer: 75 moves/s in their test).
-Our tic-tac-toe probe scored **0/6**: Laya picked the same cell regardless of board. Pattern that works for games:
+Measured here (`scripts/snake_bench.py`, 1,000 moves x 3 seeds, multilingual checkpoint, about 15-20 ms per move): **0 deaths in all 6 runs**; final score 32 / 35 / 31 with the safety layer and 3 / 18 / 31 without it. The safety layer helps most where Laya alone stalls, so treat it as part of the design. Our own tic-tac-toe probe scored **0/6**: Laya picked the same cell regardless of board. Pattern that works for games:
 Laya proposes from a small set of *semantic* questions ("is there danger ahead?"), a rule layer enforces legality and safety.
 Do not expect spatial reasoning from the encoder.
 
