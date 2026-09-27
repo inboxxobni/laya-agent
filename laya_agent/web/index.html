@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>laya-agent</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header>
+  <h1>laya-agent</h1>
+  <span class="tag">local typed decisions, no cloud</span>
+  <span class="status" id="status">checking...</span>
+</header>
+<nav id="nav">
+  <button data-view="playground" class="active">Playground</button>
+  <button data-view="usecases">Use cases</button>
+  <button data-view="chat">Chat</button>
+  <button data-view="about">About</button>
+</nav>
+<main>
+
+  <section class="view active" id="view-playground">
+    <div class="panel">
+      <p class="hint">Ask Laya to pick one option, score a rubric, or answer yes/no about a short text. About 15-25 ms per call, entirely on this machine.</p>
+      <label>Text to judge</label>
+      <textarea id="pg-state" placeholder="I was billed twice, please refund me.">I was billed twice, please refund me.</textarea>
+      <div class="row">
+        <div>
+          <label>Mode</label>
+          <select id="pg-mode">
+            <option value="choice">choice</option>
+            <option value="score">score</option>
+            <option value="yesno">yes / no</option>
+          </select>
+        </div>
+        <div>
+          <label>Question / instructions</label>
+          <input type="text" id="pg-question" value="Which team should handle this?" />
+        </div>
+      </div>
+      <label id="pg-options-label">Options (one per line)</label>
+      <textarea id="pg-options">billing
+technical
+sales</textarea>
+      <button class="run" id="pg-run">Run</button>
+      <div class="result" id="pg-result" style="display:none"></div>
+    </div>
+  </section>
+
+  <section class="view" id="view-usecases">
+    <div class="panel">
+      <p class="hint">Ready-made primitives. Click one to load its sample input, edit it, and run.</p>
+      <div class="usecase-grid" id="uc-grid"></div>
+    </div>
+    <div class="panel">
+      <label id="uc-name">Pick a use case above</label>
+      <textarea id="uc-input"></textarea>
+      <button class="run" id="uc-run" disabled>Run</button>
+      <div class="result" id="uc-result" style="display:none"></div>
+    </div>
+  </section>
+
+  <section class="view" id="view-chat">
+    <div class="panel">
+      <p class="hint">Laya screens and routes every message (guard + intent + difficulty, one forward pass); a local Ollama model writes the reply. Requires <code>TEXT_MODEL_BASE_URL</code> reachable (default: local Ollama).</p>
+      <div class="chat-log" id="chat-log"></div>
+      <div class="row">
+        <input type="text" id="chat-input" placeholder="Type a message..." />
+      </div>
+      <button class="run" id="chat-send">Send</button>
+    </div>
+  </section>
+
+  <section class="view" id="view-about">
+    <div class="panel">
+      <h3>What this is</h3>
+      <p>A local, open-weight typed-decision model (<a href="https://github.com/NandhaKishorM/laya" target="_blank">Laya</a>, running on Apple Silicon via <a href="https://github.com/mizorewww/laya-mlx" target="_blank">laya-mlx</a>) exposed as a small classifier service: choice, score, and yes/no over short text, in one forward pass, no generated tokens, no cloud call.</p>
+      <p>It is a fast System 1 classifier and router, not a planner or a text generator. See <code>docs/findings.md</code> in the repo for what it is and is not good at, measured on real cases, including the failures.</p>
+      <h3>Where else to use it</h3>
+      <ul>
+        <li>CLI: <code>uv run laya-agent choice/score/yesno/chat/usecases</code></li>
+        <li>TUI: <code>uv run laya-agent tui</code></li>
+        <li>HTTP API for other agents: <code>uv run laya-agent serve</code></li>
+        <li>pi coding agent tools + bash safety gate: <code>pi-package/</code></li>
+      </ul>
+      <p>Source: this repository. MIT licensed.</p>
+    </div>
+  </section>
+
+</main>
+<script src="app.js"></script>
+</body>
+</html>

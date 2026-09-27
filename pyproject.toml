@@ -9,6 +9,7 @@ dependencies = [
     "browser-harness==0.1.13",
     "httpx[http2]>=0.28,<1",
     "laya-mlx[demo]",
+    "textual>=0.60,<1",
 ]
 
 [project.scripts]
@@ -23,7 +24,7 @@ build-backend = "hatchling.build"
 packages = ["laya_agent", "laya_ultrafast"]
 
 [dependency-groups]
-dev = ["pytest>=8.4,<9", "ruff>=0.14,<1", "pillow>=11,<13"]
+dev = ["pytest>=8.4,<9", "pytest-asyncio>=0.24,<1", "ruff>=0.14,<1", "pillow>=11,<13"]
 
 [tool.ruff]
 line-length = 120
@@ -33,10 +34,13 @@ select = ["E", "F", "I"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+asyncio_mode = "auto"
 
 [tool.ruff.lint.per-file-ignores]
 "laya_agent/capabilities.py" = ["E501"]
 "laya_agent/usecases.py" = ["E501"]
+"laya_agent/registry.py" = ["E501"]
+"laya_agent/tui.py" = ["E501"]
 
 [tool.uv.sources]
 # PyPI 0.1.x lacks predict_shortlist; pin the git revision we tested.

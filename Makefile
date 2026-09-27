@@ -1,4 +1,4 @@
-.PHONY: setup weights doctor test serve bench browse chrome fixture snake chat usecases capabilities
+.PHONY: setup weights doctor test serve bench browse chrome fixture snake chat usecases capabilities tui web
 setup:        ## install deps and create .env
 	uv sync
 	@test -f .env || cp .env.example .env
@@ -26,3 +26,7 @@ usecases:     ## labelled evals for every primitive
 	uv run laya-agent usecases
 capabilities: ## every Laya capability
 	uv run laya-agent capabilities
+tui:          ## terminal UI: playground, use cases, chat, status
+	uv run laya-agent tui
+web:          ## web app on http://127.0.0.1:8780 (same port as the API)
+	uv run laya-agent web

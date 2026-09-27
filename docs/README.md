@@ -6,6 +6,8 @@ Drop new guides and findings here as we dig deeper into Laya. Keep each file foc
 |---|---|
 | [testing-guide.md](testing-guide.md) | **Start here to test:** step-by-step checks with expected results |
 | [use-case-catalog.md](use-case-catalog.md) | Every use case with measured status |
+| [tui.md](tui.md) | Terminal UI (Textual): playground, use cases, chat, status |
+| [web.md](web.md) | Single-page web app on the same port as the API |
 | [pi.md](pi.md) | Use Laya with the pi coding agent |
 | [setup.md](setup.md) | Install, weights, offline text model, daily commands |
 | [capabilities.md](capabilities.md) | What Laya can do, with measured numbers from this machine |

@@ -52,6 +52,8 @@ Numbers and cases: [usecases.md](usecases.md), [capabilities.md](capabilities.md
 | # | Use case | Status |
 |---|---|---|
 | P1 | Local HTTP decision service | works |
+| P5 | Terminal UI (Textual) | works, verified with the real model: playground, use-case run, chat turn, status |
+| P6 | Web app (single page, same port as API) | works, verified with curl: static files, choice, usecase, chat (attack + real reply) |
 | P2 | Batch many questions in one pass | works (about 6 ms per question) |
 | P3 | Fine-tune for your domain | untested (upstream docs exist) |
 | P4 | Non-Apple hardware | not supported by this repo (MLX) |

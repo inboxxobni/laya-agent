@@ -76,6 +76,11 @@ def main():
     sub.add_parser("usecases", help="run the labelled eval for coding / web / games / chat / acryl primitives")
     chat = sub.add_parser("chat", help="chat agent: Laya guards and routes, Ollama answers")
     chat.add_argument("--once", help="send one message and exit")
+    sub.add_parser("tui", help="terminal UI: playground, use cases, chat, status")
+    web = sub.add_parser("web", help="web app + decision API on one port")
+    web.add_argument("--host", default="127.0.0.1")
+    web.add_argument("--port", type=int, default=8780)
+    web.add_argument("--no-open", action="store_true", help="do not open a browser tab")
     args = parser.parse_args()
 
     load_environment()
@@ -107,6 +112,21 @@ def main():
         from .server import serve as run_server
 
         run_server(engine, args.host, args.port)
+    elif args.cmd == "tui":
+        from .tui import LayaApp
+
+        LayaApp().run()
+    elif args.cmd == "web":
+        import threading
+        import webbrowser
+
+        from .server import serve as run_server
+
+        static_dir = Path(__file__).with_name("web")
+        if not args.no_open:
+            url = f"http://{args.host}:{args.port}/"
+            threading.Timer(0.6, lambda: webbrowser.open(url)).start()
+        run_server(engine, args.host, args.port, static_dir=static_dir)
     elif args.cmd == "bench":
         from .bench import run, show
 
