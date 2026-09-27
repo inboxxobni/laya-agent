@@ -118,7 +118,17 @@ def make_handler(engine, static_dir=None):
 def serve(engine, host="127.0.0.1", port=8780, static_dir=None):
     engine.load()
     static_dir = Path(static_dir).resolve() if static_dir else None
-    server = ThreadingHTTPServer((host, port), make_handler(engine, static_dir))
+    try:
+        server = ThreadingHTTPServer((host, port), make_handler(engine, static_dir))
+    except OSError as error:
+        if error.errno == 48:  # EADDRINUSE
+            raise SystemExit(
+                f"Port {port} is already in use, probably another laya-agent still running.\n"
+                f"Find it with:  lsof -iTCP:{port} -sTCP:LISTEN\n"
+                f"Stop it with:  kill <PID>\n"
+                f"Or use a different port:  --port {port + 1}"
+            ) from None
+        raise
     where = f" and the web app at http://{host}:{port}/" if static_dir else ""
     print(f"laya-agent decision server on http://{host}:{port}{where}  (model {engine.model_id})", flush=True)
     try:
