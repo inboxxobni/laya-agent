@@ -1,0 +1,18 @@
+{
+  "scenario": "travel",
+  "when": "2026-09-27T03:36:22+00:00",
+  "status": "done",
+  "ms": 3411,
+  "actions": 8,
+  "passed": true,
+  "history": [
+    "Destination",
+    "Stay category \u2192 Design",
+    "Free cancellation",
+    "Find stays",
+    "Wait for the page to update",
+    "Find stays",
+    "Wait for the page to update",
+    "View Casa Flora"
+  ]
+}

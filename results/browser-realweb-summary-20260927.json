@@ -1,0 +1,11 @@
+{
+  "date": "2026-09-27",
+  "setup": "laya-agent, DECISION_MODEL=laya (aac6fef/laya-typed-decisions-mlx), text model qwen2.5:latest via local Ollama, private headless Chrome 155 on port 9333 (BU_CDP_URL), M1 Max",
+  "fixture_travel": {"runs": 3, "passed": 3, "ms": [27632, 5070, 3411], "note": "first run includes Ollama cold model load; 8 actions each; verified by final URL and page text"},
+  "wikipedia_goedel": {
+    "runs": 5, "passed": 1,
+    "outcomes": ["passed, 9.9 s, 2 actions", "Runtime.evaluate IPC timeout", "Runtime.evaluate IPC timeout", "Runtime.evaluate IPC timeout", "ended on donate.wikimedia.org (wrong page)"],
+    "diagnosed_run": "typed the query correctly, then clicked low-confidence targets (probability 0.24, confidence 0.03) and wandered; hit the model-call budget on an unrelated article",
+    "note": "the passing run used the same setup, so the policy is not reliable on this live site yet; upstream's README claims 2/2 on its own setup"
+  }
+}
