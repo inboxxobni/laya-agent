@@ -1,0 +1,11 @@
+{
+  "name": "laya-pi",
+  "version": "0.1.0",
+  "description": "Local Laya typed decisions for the pi coding agent: shell-command gate and classification tools",
+  "keywords": ["pi-package"],
+  "license": "MIT",
+  "pi": {
+    "extensions": ["./extensions"],
+    "skills": ["./skills"]
+  }
+}

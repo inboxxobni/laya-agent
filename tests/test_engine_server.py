@@ -51,6 +51,9 @@ def test_server_routes_and_validation():
         assert call(port, "/v1/yesno", {"state": "s", "proposition": "p"})[1]["answer"] is True
         status, body = call(port, "/v1/choice", {"state": "s"})
         assert status == 400 and "instructions" in body["error"]
+        status, body = call(port, "/v1/usecase/shell_risk", {"input": "ls"})
+        assert status == 200 and body["result"] in {"safe", "needs_approval", "destructive"}
+        assert call(port, "/v1/usecase/nope", {"input": "x"})[0] == 404
         assert call(port, "/v1/nope", {})[0] == 404
     finally:
         server.shutdown()

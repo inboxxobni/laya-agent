@@ -5,6 +5,7 @@
   POST /v1/choice  {"state": str, "instructions": str, "options": [..] | {label: desc}}
   POST /v1/score   {"state": str, "instructions": str, "levels": [low, .., high]}
   POST /v1/yesno   {"state": str, "proposition": str}
+  POST /v1/usecase/<name>  {"input": str}   ready-made primitives from usecases.py (see USECASES)
 
 Binds to 127.0.0.1 by default: there is no authentication.
 """
@@ -12,7 +13,21 @@ Binds to 127.0.0.1 by default: there is no authentication.
 import json
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
+from . import usecases
+
 MAX_BODY = 1_000_000
+
+# name -> function(engine, input); each returns JSON-serializable data. Keep in step with docs/usecases.md.
+USECASES = {
+    "shell_risk": lambda e, x: usecases.shell_risk(e, x),
+    "test_verdict": lambda e, x: usecases.test_verdict(e, x),
+    "page_kind": lambda e, x: usecases.page_kind(e, x),
+    "is_blocked": lambda e, x: usecases.is_blocked(e, x),
+    "agent_health": lambda e, x: usecases.agent_health(e, x),
+    "needs_review": lambda e, x: usecases.needs_review(e, x),
+    "model_tier": lambda e, x: usecases.model_tier(e, x),
+    "chat_route": lambda e, x: usecases.chat_route(e, x),
+}
 
 
 class BadRequest(ValueError):
@@ -54,6 +69,10 @@ def make_handler(engine):
 
         def do_POST(self):
             route = ROUTES.get(self.path)
+            if route is None and self.path.startswith("/v1/usecase/"):
+                fn = USECASES.get(self.path.rsplit("/", 1)[1])
+                if fn:
+                    route = lambda e, b: {"result": fn(e, field(b, "input", str))}  # noqa: E731
             if route is None:
                 return self.reply(404, {"error": "not found"})
             try:
