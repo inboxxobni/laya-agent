@@ -142,6 +142,8 @@ def suite_long_context(multi_long):
                              "correct": got == expected, "ms": round(ms, 1)}
             except Exception as error:
                 row[kind] = {"error": str(error)[:120]}
+        neg = filler * max(1, words // 14)  # negative control: same length, no needle
+        row["chunked_negative_control"] = {"p_true": chunked_yesno(multi_long, neg, needles["semantic"][1]["instructions"])}
         out[str(words)] = row
     return out
 

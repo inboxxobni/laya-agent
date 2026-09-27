@@ -28,7 +28,7 @@ Needle test with `max_len=8192` on the multilingual checkpoint (one fact buried 
 
 Latency for a whole 5,400-token document was 580-630 ms, so the extra length costs time and returns nothing useful.
 Rule: never hand Laya long text. Split into ~120-word overlapping chunks and max-pool `noul`, or shortlist first.
-The chunk experiment had no negative-control document yet (a long text without the fact); treat 0.63-0.84 as a signal, not a calibrated probability. Tracked in `findings.md`.
+Negative control (same length, fact removed): chunked max-pool p_true was 0.0 at every length, so the positives (0.63-0.84) separate cleanly. One filler style and one fact only; try your own documents.
 
 ## Calibration
 `noul` P(true) is conservative: real positives came out 0.5-0.6, negatives 0.05-0.15. A 0.5 threshold misses positives; choose a threshold per question and validate it on your own labelled cases.

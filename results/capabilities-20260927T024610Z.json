@@ -1,0 +1,113 @@
+{
+  "when": "2026-09-27T02:46:06+00:00",
+  "suites": {
+    "long_context": {
+      "100": {
+        "code": {
+          "tokens_in": 155,
+          "got": "7431",
+          "correct": true,
+          "ms": 54.2
+        },
+        "chunked_max_pool": {
+          "p_true": 0.835,
+          "correct": true
+        },
+        "semantic": {
+          "tokens_in": 155,
+          "got": true,
+          "correct": true,
+          "ms": 13.3
+        },
+        "chunked_negative_control": {
+          "p_true": 0.0
+        }
+      },
+      "400": {
+        "code": {
+          "tokens_in": 469,
+          "got": "not stated",
+          "correct": false,
+          "ms": 30.4
+        },
+        "chunked_max_pool": {
+          "p_true": 0.705,
+          "correct": true
+        },
+        "semantic": {
+          "tokens_in": 469,
+          "got": false,
+          "correct": false,
+          "ms": 28.3
+        },
+        "chunked_negative_control": {
+          "p_true": 0.0
+        }
+      },
+      "1000": {
+        "code": {
+          "tokens_in": 1115,
+          "got": "not stated",
+          "correct": false,
+          "ms": 70.2
+        },
+        "chunked_max_pool": {
+          "p_true": 0.625,
+          "correct": true
+        },
+        "semantic": {
+          "tokens_in": 1115,
+          "got": false,
+          "correct": false,
+          "ms": 66.0
+        },
+        "chunked_negative_control": {
+          "p_true": 0.0
+        }
+      },
+      "2500": {
+        "code": {
+          "tokens_in": 2719,
+          "got": "not stated",
+          "correct": false,
+          "ms": 206.0
+        },
+        "chunked_max_pool": {
+          "p_true": 0.705,
+          "correct": true
+        },
+        "semantic": {
+          "tokens_in": 2719,
+          "got": false,
+          "correct": false,
+          "ms": 202.0
+        },
+        "chunked_negative_control": {
+          "p_true": 0.0
+        }
+      },
+      "5000": {
+        "code": {
+          "tokens_in": 5405,
+          "got": "not stated",
+          "correct": false,
+          "ms": 591.1
+        },
+        "chunked_max_pool": {
+          "p_true": 0.805,
+          "correct": true
+        },
+        "semantic": {
+          "tokens_in": 5405,
+          "got": false,
+          "correct": false,
+          "ms": 596.8
+        },
+        "chunked_negative_control": {
+          "p_true": 0.0
+        }
+      }
+    }
+  },
+  "total_s": 7.8
+}
